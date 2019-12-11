@@ -12,6 +12,8 @@ class App extends Component {
       books: data.results,
     }
     this.addBook = this.addBook.bind(this);
+    this.remove = this.remove.bind(this);
+
   }
 
 
@@ -23,8 +25,12 @@ class App extends Component {
     })
   }
 
-  remove(book){
-
+  remove(index){
+    let newBook = this.state.books.slice(0)
+    const temp = newBook.splice(index, 1)
+    this.setState({
+      books: newBook
+    })
   }
 
   componentDidMount(){

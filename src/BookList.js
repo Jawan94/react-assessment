@@ -13,7 +13,7 @@ class BookList extends Component {
     showBooks(e) {
       e.preventDefault();
       this.setState({
-        show: true
+        show: true,
       })
     }
 
@@ -26,6 +26,11 @@ class BookList extends Component {
   onAddBook(value){
     value.preventDefault();
     this.props.addBook(this.state.inputValue);
+  }
+
+  onRemoveBook(index){
+    index.preventDefault();
+    this.props.removeBook(index.target.id)
   }
 
 
@@ -44,7 +49,7 @@ class BookList extends Component {
                 <ol>
                   { this.state.show
                     &&
-                    this.props.books.map((books, index) => <div><li key ={index} > {books.title}</li><button className="random" key = {books.title} >X</button></div>)
+                    this.props.books.map((books, index) => <div><li key ={index} > {books.title}</li><button className="random" key = {books.title} id = {index} onClick= {(index) => this.onRemoveBook(index)}>X</button></div>)
                     }
                     </ol>
                 </div>
