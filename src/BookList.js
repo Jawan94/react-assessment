@@ -5,7 +5,8 @@ class BookList extends Component {
         super(props);
         this.state = {
           show: false,
-          inputValue: ""
+          inputValue: "",
+          display: "inline"
         }
     }
 
@@ -43,7 +44,7 @@ class BookList extends Component {
                 <ol>
                   { this.state.show
                     &&
-                    this.props.books.map((books, index) => <li key ={index}> {books.title}</li>)
+                    this.props.books.map((books, index) => <div><li key ={index} > {books.title}</li><button className="random" key = {books.title} >X</button></div>)
                     }
                     </ol>
                 </div>
